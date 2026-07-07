@@ -9,7 +9,7 @@ import { theme } from '../utils/theme';
 export function ContentManagerScreen() {
   const [contents, setContents] = useState<Content[]>([]);
   const [text, setText] = useState('HELLO WLAN');
-  useEffect(() => contentStore.subscribe((state) => setContents(state.contents)), []);
+  useEffect(() => { const unsubscribe = contentStore.subscribe((state) => setContents(state.contents)); return () => { unsubscribe(); }; }, []);
   const create = async () => contentService.createTextContent(`Text ${contents.length + 1}`, text, 128, 64);
   return <View style={styles.container}><Text style={styles.title}>Content Manager</Text><TextInput style={styles.input} value={text} onChangeText={setText} placeholderTextColor={theme.colors.muted} /><TouchableOpacity style={styles.button} onPress={create}><Text style={styles.buttonText}>Create Text Content</Text></TouchableOpacity><FlatList data={contents} keyExtractor={(item) => item.id} renderItem={({ item }) => <View style={styles.card}><Text style={styles.name}>{item.name}</Text><ContentPreview content={item} /></View>} /></View>;
 }

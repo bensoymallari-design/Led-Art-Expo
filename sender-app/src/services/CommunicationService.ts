@@ -10,10 +10,12 @@ export class CommunicationService {
 
   onProgress(handler: (progress: TransferProgress) => void) {
     this.progressHandlers.add(handler);
-    return () => this.progressHandlers.delete(handler);
+    return () => {
+      this.progressHandlers.delete(handler);
+    };
   }
 
-  async connectToReceiver(ip: string, port = NETWORK_CONFIG.webSocket.port, deviceId = `manual-${ip}-${port}`): Promise<boolean> {
+  async connectToReceiver(ip: string, port: number = NETWORK_CONFIG.webSocket.port, deviceId = `manual-${ip}-${port}`): Promise<boolean> {
     this.setStatus(deviceId, 'connecting');
     const url = NetworkUtils.webSocketUrl(ip, port);
     return new Promise((resolve) => {

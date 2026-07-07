@@ -28,7 +28,7 @@ export class DiscoveryService {
     this.scanTimer = undefined;
   }
 
-  async addDeviceManually(ip: string, port = NETWORK_CONFIG.webSocket.port, name = `Receiver ${ip}`): Promise<Device> {
+  async addDeviceManually(ip: string, port: number = NETWORK_CONFIG.webSocket.port, name = `Receiver ${ip}`): Promise<Device> {
     if (!NetworkUtils.validateIP(ip)) throw new Error('Enter a valid IPv4 address');
     const latencyMs = await NetworkUtils.pingDevice(ip, port).catch(() => undefined);
     const now = new Date().toISOString();

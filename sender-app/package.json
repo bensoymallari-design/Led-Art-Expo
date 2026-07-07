@@ -28,7 +28,6 @@
     "react-native-svg": "15.0.0",
     "react-native-tcp": "^4.0.0",
     "react-native-udp": "^4.1.7",
-    "react-native-websocket": "^1.2.0",
     "react-native-zeroconf": "^0.13.8"
   },
   "devDependencies": {

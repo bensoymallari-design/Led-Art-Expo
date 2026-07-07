@@ -25,7 +25,7 @@ export class NetworkUtils {
     return a.every((octet, index) => (octet & mask[index]) === (b[index] & mask[index]));
   }
 
-  static async pingDevice(ip: string, port = NETWORK_CONFIG.webSocket.port, timeoutMs = 2000): Promise<number> {
+  static async pingDevice(ip: string, port: number = NETWORK_CONFIG.webSocket.port, timeoutMs = 2000): Promise<number> {
     if (!this.validateIP(ip)) throw new Error(`Invalid IP address: ${ip}`);
     const started = Date.now();
     const controller = typeof AbortController !== 'undefined' ? new AbortController() : undefined;
@@ -45,11 +45,11 @@ export class NetworkUtils {
     return parts.length === 4 && parts.every((part) => /^\d+$/.test(part) && Number(part) >= 0 && Number(part) <= 255);
   }
 
-  static webSocketUrl(ip: string, port = NETWORK_CONFIG.webSocket.port, path = NETWORK_CONFIG.webSocket.path): string {
+  static webSocketUrl(ip: string, port: number = NETWORK_CONFIG.webSocket.port, path: string = NETWORK_CONFIG.webSocket.path): string {
     return `ws://${ip}:${port}${path}`;
   }
 
-  static httpUrl(ip: string, port = NETWORK_CONFIG.http.port, path = ''): string {
+  static httpUrl(ip: string, port: number = NETWORK_CONFIG.http.port, path: string = ''): string {
     return `http://${ip}:${port}${path.startsWith('/') ? path : `/${path}`}`;
   }
 

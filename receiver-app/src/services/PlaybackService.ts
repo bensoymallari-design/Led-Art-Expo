@@ -11,7 +11,13 @@ export class PlaybackService {
   autoPlayEnabled = true;
 
   async hydrate() { this.playlist = await cacheService.getAll(); this.emit(); }
-  subscribe(listener: Listener) { this.listeners.add(listener); listener(this.current(), this.playlist); return () => this.listeners.delete(listener); }
+  subscribe(listener: Listener) {
+    this.listeners.add(listener);
+    listener(this.current(), this.playlist);
+    return () => {
+      this.listeners.delete(listener);
+    };
+  }
   current() { return this.playlist[this.currentIndex]; }
   setAutoPlay(enabled: boolean) { this.autoPlayEnabled = enabled; if (enabled) this.startAutoPlay(); else this.stop(); }
   async queueContent(content: Content) { await cacheService.cacheContent(content); this.playlist = [...this.playlist.filter((item) => item.id !== content.id), content]; if (!this.current() || this.autoPlayEnabled) { this.currentIndex = this.playlist.length - 1; this.startAutoPlay(); } this.emit(); }

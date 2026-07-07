@@ -6,7 +6,7 @@ import { deviceStore } from '../store/deviceStore';
 export function useNetworkDiscovery() {
   const [devices, setDevices] = useState<Device[]>([]);
   const [isScanning, setScanning] = useState(false);
-  useEffect(() => deviceStore.subscribe((state) => setDevices(state.devices)), []);
+  useEffect(() => { const unsubscribe = deviceStore.subscribe((state) => setDevices(state.devices)); return () => { unsubscribe(); }; }, []);
   const startDiscovery = useCallback(async () => {
     setScanning(true);
     try { setDevices(await discoveryService.discoverDevices()); }
