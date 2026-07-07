@@ -25,9 +25,6 @@
         "CHANGE_WIFI_MULTICAST_STATE",
         "INTERNET"
       ]
-    },
-    "plugins": [
-      "react-native-reanimated/plugin"
-    ]
+    }
   }
 }
