@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "LED Art Receiver",
+    "slug": "receiver-app",
+    "version": "1.0.0",
+    "orientation": "default",
+    "userInterfaceStyle": "dark",
+    "scheme": "receiverapp",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocalNetworkUsageDescription": "Discover and communicate with LED Art receivers on your local network.",
+        "NSBonjourServices": [
+          "_ledart._tcp"
+        ]
+      }
+    },
+    "android": {
+      "permissions": [
+        "ACCESS_NETWORK_STATE",
+        "ACCESS_WIFI_STATE",
+        "CHANGE_WIFI_MULTICAST_STATE",
+        "INTERNET"
+      ]
+    },
+    "plugins": [
+      "react-native-reanimated/plugin"
+    ]
+  }
+}

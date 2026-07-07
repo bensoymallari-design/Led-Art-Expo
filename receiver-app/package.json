@@ -1,0 +1,31 @@
+{
+  "name": "receiver-app",
+  "version": "1.0.0",
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.21.0",
+    "expo": "~50.0.21",
+    "expo-keep-awake": "~12.8.2",
+    "expo-network": "~5.8.0",
+    "led-art-shared": "file:../shared",
+    "react": "18.2.0",
+    "react-native": "0.73.6",
+    "react-native-background-timer": "^2.4.1",
+    "react-native-svg": "15.0.0",
+    "react-native-tcp": "^4.0.0",
+    "react-native-udp": "^4.1.7",
+    "react-native-websocket": "^1.2.0",
+    "react-native-zeroconf": "^0.13.8"
+  },
+  "devDependencies": {
+    "@types/react": "~18.2.45",
+    "typescript": "^5.3.3"
+  }
+}
