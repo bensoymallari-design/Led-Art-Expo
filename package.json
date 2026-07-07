@@ -12,6 +12,9 @@
     "start:sender": "npm run start -w sender-app",
     "start:receiver": "npm run start -w receiver-app"
   },
+  "engines": {
+    "node": ">=18 <22"
+  },
   "devDependencies": {
     "typescript": "^5.3.3"
   }
